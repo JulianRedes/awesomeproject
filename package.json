@@ -8,7 +8,7 @@
     "lint": "eslint .",
     "start": "react-native start",
     "test": "jest",
-    "generar-release-apk-android-test": "set ENVFILE=.env && cd android && gradlew clean && gradlew assembleRelease && cd .."
+    "generar-release-apk-android-test": "set ENVFILE=.env && cd android && gradlew clean && gradlew bundleRelease && cd .."
   },
   "dependencies": {
     "appcenter": "^5.0.0",
