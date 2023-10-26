@@ -9,12 +9,13 @@
     "start": "react-native start",
     "test": "jest",
     "generar-release-apk-android-test": "set ENVFILE=.env && cd android && gradlew clean && gradlew assembleRelease && cd ..",
-    "postinstall" : "npx jetify"
+    "postinstall": "npx jetify"
   },
   "dependencies": {
     "appcenter": "^5.0.0",
     "appcenter-analytics": "^5.0.0",
     "appcenter-crashes": "^5.0.0",
+    "jetifier": "^2.0.0",
     "react": "18.2.0",
     "react-native": "0.72.6"
   },
