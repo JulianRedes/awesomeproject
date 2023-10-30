@@ -19,10 +19,7 @@ import {
 
 import {
   Colors,
-  DebugInstructions,
   Header,
-  LearnMoreLinks,
-  ReloadInstructions,
 } from 'react-native/Libraries/NewAppScreen';
 
 import CodePush from 'react-native-code-push';
@@ -81,10 +78,6 @@ function App(): JSX.Element {
           <Section title="Step One">
             Edit <Text style={styles.highlight}>MOBILE 3 CODEPUSH HOLA MUNDO</Text>
           </Section>
-          <Section title="See Your Changes">
-            <ReloadInstructions />
-          </Section>
-          <LearnMoreLinks />
         </View>
       </ScrollView>
     </SafeAreaView>
