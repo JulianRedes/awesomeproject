@@ -33,15 +33,15 @@ function App(): JSX.Element {
   const onButtonPress = () => {
     CodePush.sync({
       updateDialog: { 
-        appendReleaseDescription: true, 
         title: "Hay una nueva actualizacion disponible!",
-        mandatoryUpdateMessage: "¿Deseas descargar la nueva actualizacion?",
-        // mandatoryContinueButtonLabel: "Instalar",
-        // optionalIgnoreButtonLabel: "Mas tarde"
+        optionalInstallButtonLabel: "Instalar",
+        optionalIgnoreButtonLabel: "Mas tarde",
+        optionalUpdateMessage: "¿Deseas descargar la nueva actualizacion?",
+        appendReleaseDescription: true, 
       },
       installMode: CodePush.InstallMode.IMMEDIATE,
     });
-    // CodePush.restartApp(true);
+    CodePush.restartApp(true);
   }
 
   return (
@@ -58,7 +58,8 @@ function App(): JSX.Element {
             <Text>Check for updates</Text>
           </TouchableOpacity>
         </View>
-        <Text>Probando el mensaje de las actualizacion</Text>
+        <Text>Probando el mensaje de las actualizacionnnn</Text>
+        <Text>Probando el mensaje de las actualizacionnnn</Text>
       </ScrollView>
     </SafeAreaView>
   );
