@@ -3,7 +3,12 @@ import { StyleSheet, Text, View, Button, TextInput, Modal, Alert, Pressable } fr
 import { createBottomTabNavigator } from '@react-navigation/bottom-tabs';
 import Home from './Home';
 import Styles from '../components/Styles';
+import Analytics from 'appcenter-analytics';
 
+const mensaje = () => {
+    Alert.alert('No hay mas modal 3');
+    Analytics.trackEvent('Mensaje Modal', {Category: 'modal3', Screen: 'profile3'});
+};
 
    function ProfileScreen() {
     // const [modalVisible, setModalVisible] = useState(false);
@@ -35,7 +40,7 @@ import Styles from '../components/Styles';
        <View style={{ flex: 1, justifyContent: 'center', alignItems: 'center', backgroundColor: '#88ed14' }}>
          <Text>Profile Screen</Text>
          {/* <NuevoModal /> */}
-         <Button title='Nuevo' onPress={() => Alert.alert('No hay mas modal')}/>
+         <Button title='Nuevo' onPress={mensaje}/>
        </View>
     );
    }
