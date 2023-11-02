@@ -17,6 +17,7 @@ import {
   } from 'react-native/Libraries/NewAppScreen';
   import codePush from 'react-native-code-push';
   import type { PropsWithChildren } from 'react';
+  import Styles from '../components/Styles';
 
   type SectionProps = PropsWithChildren<{
     title: string;
@@ -25,10 +26,10 @@ import {
   function Section({ children, title }: SectionProps): JSX.Element {
     const isDarkMode = useColorScheme() === 'dark';
     return (
-      <View style={styles.sectionContainer}>
+      <View style={Styles.sectionContainer}>
         <Text
           style={[
-            styles.sectionTitle,
+            Styles.sectionTitle,
             {
               color: isDarkMode ? Colors.white : Colors.black,
             },
@@ -37,7 +38,7 @@ import {
         </Text>
         <Text
           style={[
-            styles.sectionDescription,
+            Styles.sectionDescription,
             {
               color: isDarkMode ? Colors.light : Colors.dark,
             },
@@ -48,65 +49,19 @@ import {
     );
   }
 
-//   function codePushStatusDidChange(syncStatus: codePush.SyncStatus) {
-//     switch(syncStatus) {
-//       case codePush.SyncStatus.CHECKING_FOR_UPDATE:
-//         //this.setState({ syncMessage: "Checking for update." });
-//         console.log(70, "Checking for update.");
-//         break;
-//       case codePush.SyncStatus.DOWNLOADING_PACKAGE:
-//         //this.setState({ syncMessage: "Downloading package." });
-//         console.log(74, "Downloading package.");
-//         break;
-//       case codePush.SyncStatus.AWAITING_USER_ACTION:
-//         //this.setState({ syncMessage: "Awaiting user action." });
-//         console.log(78, "Awaiting user action.");
-//         break;
-//       case codePush.SyncStatus.INSTALLING_UPDATE:
-//         //this.setState({ syncMessage: "Installing update." });
-//         console.log(82, "Installing update.");
-//         break;
-//       case codePush.SyncStatus.UP_TO_DATE:
-//         //this.setState({ syncMessage: "App up to date.", progress: false });
-//         Alert.alert('App is up to date.');
-//         console.log(86, "App is up to date.");
-//         break;
-//       case codePush.SyncStatus.UPDATE_IGNORED:
-//         //this.setState({ syncMessage: "Update cancelled by user.", progress: false });
-//         console.log(90, "Update cancelled by user.");
-//         break;
-//       case codePush.SyncStatus.UPDATE_INSTALLED:
-//         //this.setState({ syncMessage: "Update installed and will be applied on restart.", progress: false });
-//         console.log(94, "Update installed and will be applied on restart.");
-//         break;
-//       case codePush.SyncStatus.UNKNOWN_ERROR:
-//         //this.setState({ syncMessage: "An unknown error occurred.", progress: false });
-//         console.log(98, "An unknown error occurred.");
-//         break;
-//     }
-//   }
-  
-  
-//   function syncImmediate() {
-//     var updateDialogOptions = {
-//       updateTitle: "Hay una actualizacion disponible",
-//       optionalUpdateMessage: "Instalar?",
-//       optionalIgnoreButtonLabel: "NO",
-//       optionalInstallButtonLabel: "SI",
-//   };
-//     codePush.sync({
-//         updateDialog: updateDialogOptions,
-//         installMode: codePush.InstallMode.IMMEDIATE
-//     }, (status) => codePushStatusDidChange(status)
-//     );
-//   }
-
   const updateApp = async () => {
+    var updateDialogOptions = {
+       title: "Hay una actualizacion disponible",
+      optionalUpdateMessage: "Instalar?",
+      optionalIgnoreButtonLabel: "NO",
+      optionalInstallButtonLabel: "SI",
+  };
+
     try {
        let update = await codePush.checkForUpdate();
        if (update) {
          codePush.sync(
-           {
+           {  updateDialog: updateDialogOptions,
              installMode: codePush.InstallMode.IMMEDIATE,
            },
            (status) => {
@@ -135,7 +90,7 @@ import {
          );
        } else {
          console.log('No updates available');
-         Alert.alert('No updates available');
+         Alert.alert('No hay actualizaciones disponibles');
        }
     } catch (error) {
        console.log('An error occurred: ', error);
@@ -161,7 +116,7 @@ function Home() {
         }}>
         <Section title="Seccion 2">
         <TouchableOpacity style={buttonstyle} onPress={updateApp}>
-        <Text style={styles.syncButton}>Presionar para obtener update</Text>
+        <Text style={Styles.syncButton}>Presionar para obtener update</Text>
     </TouchableOpacity>
     </Section>
     </View>
@@ -170,29 +125,7 @@ function Home() {
     );
 }
 
-   const styles = StyleSheet.create({
-    sectionContainer: {
-      marginTop: 32,
-      paddingHorizontal: 24,
-    },
-    sectionTitle: {
-      fontSize: 24,
-      fontWeight: '600',
-    },
-    sectionDescription: {
-      marginTop: 8,
-      fontSize: 18,
-      fontWeight: '400',
-    },
-    highlight: {
-      fontWeight: '700',
-    },
-    syncButton: {
-      color: "white",
-      fontSize: 17
-    },
-  });
 
-  let codePushOptions = { checkFrequency: codePush.CheckFrequency.MANUAL };
+let codePushOptions = { checkFrequency: codePush.CheckFrequency.MANUAL };
 
 export default codePush(codePushOptions)(Home);
