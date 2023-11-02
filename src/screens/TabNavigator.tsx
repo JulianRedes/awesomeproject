@@ -1,14 +1,41 @@
-import React from 'react';
-import { StyleSheet, Text, View, Button, TextInput } from 'react-native';
+import React, {useState} from 'react';
+import { StyleSheet, Text, View, Button, TextInput, Modal, Alert, Pressable } from 'react-native';
 import { createBottomTabNavigator } from '@react-navigation/bottom-tabs';
 import Home from './Home';
 import Styles from '../components/Styles';
 
-   
+
    function ProfileScreen() {
+    // const [modalVisible, setModalVisible] = useState(false);
+
+    // const NuevoModal = () => (
+    //       <Modal
+    //         animationType="slide"
+    //         transparent={true}
+    //         visible={modalVisible}
+    //         onRequestClose={() => {
+    //           Alert.alert('Modal has been closed.');
+    //           setModalVisible(!modalVisible);
+    //         }}>
+    //         <View style={Styles.centeredView}>
+    //           <View style={Styles.modalView}>
+    //             <Text style={Styles.modalText}>Titulo mensajes</Text>
+    //             <Pressable
+    //               style={[Styles.button, Styles.buttonClose]}
+    //               onPress={() => setModalVisible(!modalVisible)}>
+    //               <Text >Cerrar modal</Text>
+    //             </Pressable>
+    //           </View>
+    //         </View>
+    //       </Modal>
+    //     );
+    
+
     return (
-       <View style={{ flex: 1, justifyContent: 'center', alignItems: 'center' }}>
+       <View style={{ flex: 1, justifyContent: 'center', alignItems: 'center', backgroundColor: '#88ed14' }}>
          <Text>Profile Screen</Text>
+         {/* <NuevoModal /> */}
+         <Button title='Nuevo' onPress={() => Alert.alert('No hay mas modal')}/>
        </View>
     );
    }
@@ -17,8 +44,8 @@ import Styles from '../components/Styles';
    
    function SettingsScreen() {
     return (
-       <View style={{ flex: 1, justifyContent: 'center', alignItems: 'center' }}>
-         <Text>Settings Screen</Text>
+       <View style={{ flex: 1, justifyContent: 'center', alignItems: 'center', backgroundColor: '#509fd4' }}>
+         <Text style={{padding: 20}}>Settings Screen</Text>
          <TextInput placeholder='escribe aqui' style={Styles.input}/>
        </View>
     );
