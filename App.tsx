@@ -29,7 +29,7 @@ import TabNavigator from './src/screens/TabNavigator';
 function mensajeBoton() {
 
   Alert.alert('boton 1');
-  
+
 }
 
 
@@ -39,12 +39,10 @@ function App() {
 
   return (
     <NavigationContainer>
-    <TabNavigator/>
+      <TabNavigator />
     </NavigationContainer>
   );
 }
-
-
 
 //let codePushOptions = { checkFrequency: codePush.CheckFrequency.MANUAL };
 
