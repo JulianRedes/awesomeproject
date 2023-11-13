@@ -4,6 +4,7 @@ import { createBottomTabNavigator } from '@react-navigation/bottom-tabs';
 import Home from './Home';
 import Styles from '../components/Styles';
 import Analytics from 'appcenter-analytics';
+import Icon from 'react-native-vector-icons/FontAwesome';
 
 const mensaje = () => {
     Alert.alert('No hay mas modal 3');
@@ -61,9 +62,26 @@ const mensaje = () => {
 function TabNavigator() {
  return (
     <Tab.Navigator>
-      <Tab.Screen name="Home" component={Home} />
-      <Tab.Screen name="Profile" component={ProfileScreen} />
-      <Tab.Screen name="Settings" component={SettingsScreen} />
+      <Tab.Screen name="Home" component={Home}
+       options={{
+         tabBarIcon: ({ color, size }) => (
+            <Icon name="home" size={30} color="#0000FF" />
+          ),
+         }} />
+      <Tab.Screen name="Profile" component={ProfileScreen} 
+      options={{
+         tabBarIcon: ({ color, size }) => (
+            <Icon name="user-circle-o" size={30}  />
+          ),
+         }}
+      />
+      <Tab.Screen name="Settings" component={SettingsScreen} 
+      options={{
+         tabBarIcon: ({ color, size }) => (
+            <Icon name="sun-o" size={30} color="#000000" />
+          ),
+         }}
+      />
     </Tab.Navigator>
  );
 }

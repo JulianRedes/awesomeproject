@@ -26,14 +26,6 @@ import TabNavigator from './src/screens/TabNavigator';
 
 
 
-function mensajeBoton() {
-
-  Alert.alert('boton 1');
-
-}
-
-
-
 
 function App() {
 
