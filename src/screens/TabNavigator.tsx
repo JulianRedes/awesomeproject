@@ -71,7 +71,7 @@ function TabNavigator() {
       <Tab.Screen name="Profile" component={ProfileScreen} 
       options={{
          tabBarIcon: ({ color, size }) => (
-            <Icon name="user-circle-o" size={30}  />
+            <Icon name="user-circle-o" size={30} color="#0000FF" />
           ),
          }}
       />
