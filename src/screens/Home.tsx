@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useState } from 'react';
 import {
     SafeAreaView,
     ScrollView,
@@ -98,31 +98,43 @@ import {
    };
 
 function Home() {
+  const [welcomeMessage, setWelcomeMessage] = useState('');
 
     const buttonstyle = {
         backgroundColor: "green",
         padding: 30
       }
 
-    return (
-    
+  const handleButtonClick = () => {
+    setWelcomeMessage('Hola, mundo');
+  };
+
+  return (
+
     <SafeAreaView >
-    <ScrollView
-    contentInsetAdjustmentBehavior="automatic"
-    >
-    <View
-        style={{
-        backgroundColor: Colors.white,
-        }}>
-        <Section title="Seccion 2">
-        <TouchableOpacity style={buttonstyle} onPress={updateApp}>
-        <Text style={Styles.syncButton}>Presionar para obtener update</Text>
-    </TouchableOpacity>
-    </Section>
-    </View>
-    </ScrollView>
+      <ScrollView
+        contentInsetAdjustmentBehavior="automatic"
+      >
+        <View
+          style={{
+            backgroundColor: Colors.white,
+          }}>
+          <Section title="Seccion 2">
+            <TouchableOpacity style={buttonstyle} onPress={updateApp}>
+              <Text style={Styles.syncButton}>Presionar para obtener update</Text>
+            </TouchableOpacity>
+          </Section>
+
+          <Section title="Seccion 3">
+          <Button testID='MiBoton' title="Mostrar mensaje" onPress={handleButtonClick} />
+          <View style={{flex: 1, padding: 15}}>
+          <Text testID='BienvenidoLabel'>{welcomeMessage}</Text>
+          </View>
+          </Section>
+        </View>
+      </ScrollView>
     </SafeAreaView>
-    );
+  );
 }
 
 

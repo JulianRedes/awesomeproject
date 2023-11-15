@@ -39,9 +39,9 @@ const mensaje = () => {
 
     return (
        <View style={{ flex: 1, justifyContent: 'center', alignItems: 'center', backgroundColor: '#88ed14' }}>
-         <Text>Profile Screen</Text>
+         <Text testID='profileLabel' >Profile Screen</Text>
          {/* <NuevoModal /> */}
-         <Button title='Nuevo' onPress={mensaje}/>
+         <Button testID='nuevo' title='Nuevo' onPress={mensaje}/>
        </View>
     );
    }
@@ -49,11 +49,29 @@ const mensaje = () => {
    
    
    function SettingsScreen() {
+      const [displayText, setDisplayText] = useState('');
+      const [inputText, setInputText] = useState('');
+
+      const handleButtonPress = () => {
+         setDisplayText(inputText);
+       };
+
+       const handleInputChange = (text: string) => {
+         setInputText(text);
+       };
+
     return (
+       <>
        <View style={{ flex: 1, justifyContent: 'center', alignItems: 'center', backgroundColor: '#509fd4' }}>
-         <Text style={{padding: 20}}>Settings Screen</Text>
-         <TextInput placeholder='escribe aqui' style={Styles.input}/>
+         <Text testID='settingsLabel' style={{padding: 20}}>Settings Screen</Text>
+         <TextInput testID='textInput' placeholder='escribe aqui' style={Styles.input}
+          onChangeText={handleInputChange} value={inputText}/>
+         <Button testID='settingsButton' title='enviar' onPress={handleButtonPress}/>
        </View>
+       <View style={{ flex: 0.3, borderWidth: 5, backgroundColor: '#FFFFFF' }}>
+       <Text testID='settingsLabel'>{displayText}</Text>
+       </View>
+       </>
     );
    }
 
@@ -67,12 +85,14 @@ function TabNavigator() {
          tabBarIcon: ({ color, size }) => (
             <Icon name="home" size={30} color="#0000FF" />
           ),
+          tabBarTestID: 'home',
          }} />
       <Tab.Screen name="Profile" component={ProfileScreen} 
       options={{
          tabBarIcon: ({ color, size }) => (
             <Icon name="user-circle-o" size={30} color="#0000FF" />
           ),
+          tabBarTestID: 'profile',
          }}
       />
       <Tab.Screen name="Settings" component={SettingsScreen} 
@@ -80,6 +100,7 @@ function TabNavigator() {
          tabBarIcon: ({ color, size }) => (
             <Icon name="sun-o" size={30} color="#000000" />
           ),
+          tabBarTestID: 'settings',
          }}
       />
     </Tab.Navigator>
