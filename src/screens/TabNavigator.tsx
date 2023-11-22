@@ -39,9 +39,9 @@ const mensaje = () => {
 
     return (
        <View style={{ flex: 1, justifyContent: 'center', alignItems: 'center', backgroundColor: '#88ed14' }}>
-         <Text testID='profileLabel' >Profile Screen</Text>
+         <Text testID='profileID' accessibilityLabel='labelTextProfile' >Profile Screen</Text>
          {/* <NuevoModal /> */}
-         <Button testID='nuevo' title='Nuevo' onPress={mensaje}/>
+         <Button testID='nuevoID' accessibilityLabel='labelNuevo' title='Nuevo' onPress={mensaje}/>
        </View>
     );
    }
@@ -63,13 +63,13 @@ const mensaje = () => {
     return (
        <>
        <View style={{ flex: 1, justifyContent: 'center', alignItems: 'center', backgroundColor: '#509fd4' }}>
-         <Text testID='settingsLabel' style={{padding: 20}}>Settings Screen</Text>
-         <TextInput testID='textInput' placeholder='escribe aqui' style={Styles.input}
+         <Text testID='screenID' accessibilityLabel='labelScreen' style={{padding: 20}}>Settings Screen</Text>
+         <TextInput testID='textInput' accessibilityLabel='labelTextInput' placeholder='escribe aqui' style={Styles.input}
           onChangeText={handleInputChange} value={inputText}/>
-         <Button testID='settingsButton' title='enviar' onPress={handleButtonPress}/>
+         <Button testID='settingsButton' accessibilityLabel='labelEnviar' title='enviar' onPress={handleButtonPress}/>
        </View>
        <View style={{ flex: 0.3, borderWidth: 5, backgroundColor: '#FFFFFF' }}>
-       <Text testID='settingsLabel'>{displayText}</Text>
+       <Text testID='settingsTextID' accessibilityLabel='labelTextSettings'>{displayText}</Text>
        </View>
        </>
     );
@@ -86,6 +86,7 @@ function TabNavigator() {
             <Icon name="home" size={30} color="#0000FF" />
           ),
           tabBarTestID: 'home',
+          tabBarAccessibilityLabel: 'labelHome',
          }} />
       <Tab.Screen name="Profile" component={ProfileScreen} 
       options={{
@@ -93,6 +94,7 @@ function TabNavigator() {
             <Icon name="user-circle-o" size={30} color="#0000FF" />
           ),
           tabBarTestID: 'profile',
+          tabBarAccessibilityLabel: 'labelProfile',
          }}
       />
       <Tab.Screen name="Settings" component={SettingsScreen} 
@@ -101,6 +103,7 @@ function TabNavigator() {
             <Icon name="sun-o" size={30} color="#000000" />
           ),
           tabBarTestID: 'settings',
+          tabBarAccessibilityLabel: 'labelSettings',
          }}
       />
     </Tab.Navigator>

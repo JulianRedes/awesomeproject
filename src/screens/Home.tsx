@@ -126,9 +126,9 @@ function Home() {
           </Section>
 
           <Section title="Seccion 3">
-          <Button testID='MiBoton' title="Mostrar mensaje" onPress={handleButtonClick} />
+          <Button accessibilityLabel='labelBoton' testID='botonMensajeHomeID' title="Mostrar mensaje" onPress={handleButtonClick} />
           <View style={{flex: 1, padding: 15}}>
-          <Text testID='BienvenidoLabel'>{welcomeMessage}</Text>
+          <Text accessibilityLabel='labelText' testID='homeTextViewID'>{welcomeMessage}</Text>
           </View>
           </Section>
         </View>
